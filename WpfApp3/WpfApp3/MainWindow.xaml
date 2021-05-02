@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="480" Width="600">
+    <DockPanel Margin="8">
+        <Border DockPanel.Dock="Top"
+                CornerRadius="6"
+                BorderThickness="1"
+                BorderBrush="Green"
+                Background="Yellow"
+                Padding="8"
+                Margin="0 0 0 8">
+            <TextBlock FontSize="14"
+            TextWrapping="Wrap">
+            Select a font to view from the list below.
+            You can change the text by typing in the region at the bottom.
+            </TextBlock>
+        </Border>
+
+        <ListBox x:Name="FontList"
+            DockPanel.Dock="Left"
+            ItemsSource="{x:Static Fonts.SystemFontFamilies}"
+            Width="160" />
+        <TextBox x:Name="SampleText"
+            DockPanel.Dock="Bottom"
+            MinLines="4"
+            Margin="8 0"
+            TextWrapping="Wrap"
+            ToolTip="Type here to change the preview text.">
+            The quick brown fox jumps over the lazy dog.
+        </TextBox>
+        <StackPanel Margin="8 0 8 8">
+            <TextBlock x:Name="VerySmallText"
+                Text="{Binding ElementName=SampleText, Path=Text}"
+                FontFamily="{Binding ElementName=FontList,Path=SelectedItem}"
+                FontSize="10"
+                TextWrapping="Wrap"
+                Margin="0 0 0 4" />
+            <TextBlock x:Name="SmallText"
+                Text="{Binding ElementName=SampleText, Path=Text}"
+                FontFamily="{Binding ElementName=FontList,Path=SelectedItem}"
+                FontSize="16"
+                TextWrapping="Wrap"
+                Margin="0 0 0 4" />
+            <TextBlock x:Name="MediumText"
+                Text="{Binding ElementName=SampleText, Path=Text}"
+                FontFamily="{Binding ElementName=FontList,Path=SelectedItem}"
+                FontSize="24"
+                TextWrapping="Wrap"
+                Margin="0 0 0 4" />
+            <TextBlock x:Name="LargeText"
+                Text="{Binding ElementName=SampleText, Path=Text}"
+                FontFamily="{Binding ElementName=FontList,Path=SelectedItem}"
+                FontSize="32"
+                TextWrapping="Wrap" />
+        </StackPanel>
+    </DockPanel>
+</Window>
